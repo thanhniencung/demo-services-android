@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/topView"
+            android:layout_alignParentTop="true"
+            android:text="RelativeLayout"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <RelativeLayout
+            android:id="@+id/bottomView"
+            android:layout_below="@+id/topView"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:background="#ff00ff"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+            <View
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="#00ff00"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+            <View
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:background="#0000ff"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+            <View
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="#669900"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+            <View
+                android:layout_centerInParent="true"
+                android:background="@android:color/holo_red_dark"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+        </RelativeLayout>
+
+
+</RelativeLayout>
