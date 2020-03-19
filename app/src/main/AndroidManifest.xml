@@ -3,6 +3,7 @@
     package="com.code4func.helloandroid">
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name=".contentprovider.MyContentProvider"
+            android:authorities="com.code4func.helloandroid"
+            android:enabled="true"
+            android:exported="true"></provider>
+
+        <activity android:name=".DemoStartServiceActivity" />
 
         <service
             android:name=".service.ForegroundService"
@@ -34,7 +43,7 @@
         <activity android:name=".FirstActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".DemoStartServiceActivity">
+        <activity android:name=".contentprovider.ContentResolverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
