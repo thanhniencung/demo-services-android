@@ -1,7 +1,10 @@
 package com.code4func.helloandroid.service
 
 import android.app.Service
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.*
 import android.os.Process.THREAD_PRIORITY_BACKGROUND
 import android.util.Log
@@ -32,7 +35,27 @@ class MyService : Service() {
         }
     }
 
+
+    private val broadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            when(intent?.action) {
+                "com.code4func.helloandroid.CODE4FUNC" -> {
+                    Toast.makeText(context, intent.getStringExtra("DEMO_MSG"),
+                    Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+
+                }
+            }
+        }
+    }
+
     override fun onCreate() {
+
+        val intentFilter = IntentFilter()
+        intentFilter.addAction("com.code4func.helloandroid.CODE4FUNC")
+        registerReceiver(broadcastReceiver, intentFilter)
+
         Log.d("MyService", "onCreate")
         // Start up the thread running the service.  Note that we create a
         // separate thread because the service normally runs in the process's

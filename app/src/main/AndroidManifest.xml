@@ -12,12 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".contentprovider.ContentResolverActivity"></activity>
+
+        <receiver
+            android:name=".broadcastreceivers.MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+        </receiver>
 
         <provider
             android:name=".contentprovider.MyContentProvider"
             android:authorities="com.code4func.helloandroid"
             android:enabled="true"
-            android:exported="true"></provider>
+            android:exported="true" />
 
         <activity android:name=".DemoStartServiceActivity" />
 
@@ -32,10 +42,12 @@
             android:name=".service.BoundService"
             android:enabled="true"
             android:exported="true" />
+
         <service
             android:name=".service.MyService"
             android:enabled="true"
             android:exported="true" />
+
         <service
             android:name=".service.MyIntentService"
             android:exported="false" />
@@ -43,7 +55,7 @@
         <activity android:name=".FirstActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".contentprovider.ContentResolverActivity">
+        <activity android:name=".broadcastreceivers.DemoBroadcastReceiverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

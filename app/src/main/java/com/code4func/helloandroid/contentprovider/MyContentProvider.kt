@@ -16,7 +16,7 @@ private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH).apply {
     //content://com.code4func.helloandroid/user
     addURI(authority, "user", 1)
 
-    //content://com.code4func.helloandroid/user/3
+    //content://com.code4func.helloandroid/user/545
     addURI(authority, "user/#", 2)
 }
 

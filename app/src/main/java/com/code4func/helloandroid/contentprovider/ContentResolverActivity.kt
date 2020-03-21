@@ -37,7 +37,7 @@ class ContentResolverActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun showContact() {
-
+        // coroutines
         launch {
             val contacts = getContactFromContentProviders()
 
@@ -73,8 +73,11 @@ class ContentResolverActivity : AppCompatActivity(), CoroutineScope {
             ContactsContract.Contacts.DISPLAY_NAME
         )
 
+        // projection - colums
+        // selection - where
         val cursor = contentResolver.query(
-            ContactsContract.Contacts.CONTENT_URI, projection,
+            ContactsContract.Contacts.CONTENT_URI,  // root api code4func.com
+            projection,
             null, null, null
         )!!
 
