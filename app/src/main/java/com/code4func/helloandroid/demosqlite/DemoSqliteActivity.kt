@@ -12,24 +12,17 @@ class DemoSqliteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_demo_sqlite)
 
-
         val code4FuncDb = Code4FuncDb(this)
         val userRepository = UserRepository(code4FuncDb)
 
         insert.setOnClickListener {
-            userRepository.insert(User(
-                name = "Ryan",
-                email = "ryan@gmail.com"
-            ))
+            userRepository.insert(
+                User(name = "Ryan", email="ryan@gmail.com")
+            )
 
-            userRepository.insert(User(
-                name = "Bob",
-                email = "bob@gmail.com"
-            ))
-        }
-
-        selectUserByID.setOnClickListener {
-            Log.d("USER_DATA", userRepository.selectUserById(4).toString())
+            userRepository.insert(
+                User(name = "Alice", email="alice@gmail.com")
+            )
         }
 
         selectAll.setOnClickListener {

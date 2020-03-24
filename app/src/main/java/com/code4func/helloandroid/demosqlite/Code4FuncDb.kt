@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class DbConfig {
     companion object {
-        const val DB_NAME = "code4func.db"
+        const val DB_NAME = "code4func-sqlite.db"
         const val DB_VERSION = 1
     }
 
@@ -18,18 +18,18 @@ class DbConfig {
 
         fun buildSchema() = """
             CREATE TABLE $TABLE_NAME (
-                 $COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                 $COL_NAME TEXT,
-                 $COL_EMAIL TEXT
-            ) 
+                $COL_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COL_NAME TEXT,
+                $COL_EMAIL TEXT
+            )
         """
 
         fun dropTable() = "DROP TABLE IF EXISTS $TABLE_NAME"
     }
 }
 
-class Code4FuncDb(context: Context?) :
-    SQLiteOpenHelper(context, DbConfig.DB_NAME, null, DbConfig.DB_VERSION) {
+class Code4FuncDb(context: Context?) : SQLiteOpenHelper(
+        context, DbConfig.DB_NAME, null, DbConfig.DB_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(DbConfig.UserTable.buildSchema())
@@ -37,7 +37,7 @@ class Code4FuncDb(context: Context?) :
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL(DbConfig.UserTable.dropTable())
-        db?.execSQL(DbConfig.UserTable.buildSchema())
+
+        onCreate(db)
     }
 }
-

@@ -2,7 +2,7 @@ package com.code4func.helloandroid.demosqlite
 
 import android.content.ContentValues
 
-class UserRepository(private val code4FuncDb: Code4FuncDb) {
+class UserRepository (private val code4FuncDb: Code4FuncDb) {
     fun insert(user: User) {
         val database = code4FuncDb.writableDatabase
 
@@ -14,64 +14,34 @@ class UserRepository(private val code4FuncDb: Code4FuncDb) {
         }
     }
 
-    fun selectUserById(userId: Int) : User? {
-        val database = code4FuncDb.readableDatabase
-
-        val cursor = database.query(true, DbConfig.UserTable.TABLE_NAME,
-            arrayOf(
-                DbConfig.UserTable.COL_ID,
-                DbConfig.UserTable.COL_NAME,
-                DbConfig.UserTable.COL_EMAIL
-            ), "_id = $userId",
-            null, null, null, null, null)
-
-        cursor?.let {
-            if (cursor.moveToFirst()) { // ROOM
-                val idIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_ID)
-                val nameIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_NAME)
-                val emailIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_EMAIL)
-
-                return User(
-                    id = cursor.getInt(idIndex),
-                    name = cursor.getString(nameIndex),
-                    email = cursor.getString(emailIndex)
-                )
-            }
-        }
-
-        return null
-    }
-
     fun selectAll() : List<User> {
         val database = code4FuncDb.readableDatabase
 
         val cursor = database.query(true, DbConfig.UserTable.TABLE_NAME,
-            arrayOf(
-                DbConfig.UserTable.COL_ID,
-                DbConfig.UserTable.COL_NAME,
-                DbConfig.UserTable.COL_EMAIL
-            ), null, null, null, null, null, null)
+                    arrayOf(
+                        DbConfig.UserTable.COL_ID,
+                        DbConfig.UserTable.COL_NAME,
+                        DbConfig.UserTable.COL_EMAIL
+                    ),
+            null, null, null, null, null, null)
 
         cursor?.let {
-            if (cursor.moveToFirst()) { // ROOM
+             if (cursor.moveToFirst()) {
+                 val result = mutableListOf<User>()
+                 do {
+                     val idIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_ID)
+                     val nameIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_NAME)
+                     val emailIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_EMAIL)
 
-                val result = mutableListOf<User>()
+                     result.add(User(
+                         id = cursor.getInt(idIndex),
+                         name = cursor.getString(nameIndex),
+                         email = cursor.getString(emailIndex)
+                     ))
+                 }while (cursor.moveToNext())
 
-                do {
-                    val idIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_ID)
-                    val nameIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_NAME)
-                    val emailIndex = cursor.getColumnIndex(DbConfig.UserTable.COL_EMAIL)
-
-                    result.add(User(
-                        id = cursor.getInt(idIndex),
-                        name = cursor.getString(nameIndex),
-                        email = cursor.getString(emailIndex)
-                    ))
-
-                } while (cursor.moveToNext())
-
-                return result
-            }
+                 return result
+             }
         }
 
         return listOf()
@@ -81,7 +51,7 @@ class UserRepository(private val code4FuncDb: Code4FuncDb) {
 
     }
 
-    fun delete(userID: Int) {
+    fun delete(userId: Int) {
 
     }
 }
