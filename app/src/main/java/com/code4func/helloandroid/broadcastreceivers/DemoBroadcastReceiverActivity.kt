@@ -16,7 +16,6 @@ class DemoBroadcastReceiverActivity : AppCompatActivity() {
         val intentService = Intent(this, MyService::class.java)
         startService(intentService)
 
-
         btnSendEvent.setOnClickListener {
             val intent = Intent()
             intent.action = "com.code4func.helloandroid.CODE4FUNC"

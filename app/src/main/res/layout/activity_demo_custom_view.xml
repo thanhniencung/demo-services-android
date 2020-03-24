@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".customview.DemoCustomViewActivity">
+
+    <com.code4func.helloandroid.customview.MyCustomView
+        android:id="@+id/myCustomView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:viewColor="@color/colorPrimary"/>
+
+</LinearLayout>
