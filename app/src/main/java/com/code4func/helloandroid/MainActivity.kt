@@ -1,11 +1,13 @@
 package com.code4func.helloandroid
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -39,5 +41,7 @@ class MainActivity : AppCompatActivity() {
                 Log.e("CODE4FUNC", e.toString())
             }
         }
+
+
     }
 }
