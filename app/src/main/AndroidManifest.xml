@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".demosqlite.DemoSqliteActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerActivity"></activity>
+
+        <activity android:name=".demosqlite.DemoSqliteActivity" />
         <activity android:name=".customview.DemoCustomViewActivity" />
         <activity android:name=".broadcastreceivers.DemoBroadcastReceiverActivity" />
         <activity android:name=".contentprovider.ContentResolverActivity" />
@@ -56,7 +58,7 @@
         <activity android:name=".FirstActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".recyclerview.RecyclerActivity">
+        <activity android:name=".resource.DemoResourceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
