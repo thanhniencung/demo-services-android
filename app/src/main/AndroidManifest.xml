@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.code4func.helloandroid">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -12,8 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".recyclerview.RecyclerActivity"></activity>
-
+        <activity android:name=".resource.DemoResourceActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerActivity" />
         <activity android:name=".demosqlite.DemoSqliteActivity" />
         <activity android:name=".customview.DemoCustomViewActivity" />
         <activity android:name=".broadcastreceivers.DemoBroadcastReceiverActivity" />
@@ -58,7 +59,7 @@
         <activity android:name=".FirstActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".resource.DemoResourceActivity">
+        <activity android:name=".retrofit.RetrofitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
